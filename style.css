@@ -1,0 +1,684 @@
+/*  import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+/* color guide 
+black : #000
+charcoal : #36454F
+broken white : #EEEBE3
+pure white : #fff
+blue denim : #36416C
+light blue denim : #6E7AA8 */
+
+/* all */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  background-color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.preloader-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.preloader-container p {
+  color: #fff;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 25px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* #preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  background: #333 url('http://files.mimoymima.com/images/loading.gif') no-repeat center center;
+} */
+
+/* custom scroll bar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* all similar content styling codes */
+section {
+  padding: 100px 0;
+}
+
+.max-width {
+  max-width: 1300px;
+  padding: 0 80px;
+  margin: auto;
+}
+
+.about,
+.skills,
+.projects,
+.teams,
+.contact,
+footer {
+  font-family: 'Poppins', sans-serif;
+}
+
+.about .about-content,
+.projects .serv-content,
+.skills .skills-content,
+.contact .contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section .title {
+  position: relative;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 60px;
+  padding-bottom: 20px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+section .title::before {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 180px;
+  height: 3px;
+  background: rgb(0, 0, 0);
+  transform: translateX(-50%);
+}
+
+section .title::after {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  font-size: 20px;
+  color: black;
+  padding: 0 5px;
+  background: #fff;
+  transform: translateX(-50%);
+}
+
+/* navbar styling */
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  padding: 30px 0;
+  font-family: 'Ubuntu', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.navbar.sticky {
+  padding: 15px 0px 0px;
+  background: #36416c;
+}
+
+.navbar .max-width {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .logo a {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.navbar .logo a span {
+  color: #36416c;
+  transition: all 0.3s ease;
+}
+
+.navbar.sticky .logo a span {
+  color: #fff;
+}
+
+.navbar .menu li {
+  list-style: none;
+  display: inline-block;
+}
+
+.navbar .menu li a {
+  display: block;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 25px;
+  transition: color 0.3s ease;
+}
+
+.navbar .menu li a:hover {
+  color: #36416c;
+}
+
+.navbar.sticky .menu li a:hover {
+  color: #fff;
+}
+
+/* menu btn styling */
+.menu-btn {
+  color: #fff;
+  font-size: 23px;
+  cursor: pointer;
+  display: none;
+}
+
+.scroll-up-btn {
+  position: fixed;
+  height: 45px;
+  width: 42px;
+  background: #36416c;
+  right: 30px;
+  bottom: 10px;
+  text-align: center;
+  line-height: 45px;
+  z-index: 9999;
+  font-size: 40px;
+  border-radius: 6px;
+  border-bottom-width: 2px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.scroll-up-btn.show {
+  bottom: 30px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-up-btn:hover {
+  filter: brightness(90%);
+}
+
+/* home section styling */
+.home {
+  background: url('gambar/wallpaperfilter.png') no-repeat center;
+  display: flex;
+  height: 100vh;
+  color: #fff;
+  min-height: 500px;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.home .max-width {
+  margin: auto 0 auto 30px;
+}
+
+.home .home-content .text-1 {
+  font-size: 27px;
+}
+
+.home .home-content .text-2 {
+  font-size: 75px;
+  font-weight: 600;
+  margin-left: -3px;
+}
+
+.home .home-content .text-3 {
+  font-size: 40px;
+  margin: 5px 0;
+}
+
+.home .home-content .text-3 span {
+  color: #6e7aa8;
+  font-weight: 500;
+  /* background-color: white;
+    padding: 3px; */
+}
+
+/* about section styling */
+.about .title::after {
+  content: 'who am i?';
+}
+
+.about p {
+  text-align: center;
+}
+
+.about .gambar {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  margin: 0 auto 50px auto;
+  background-image: url('gambar/dzaky.jpg');
+  background-size: 525px;
+  background-position: -133px -350px;
+}
+
+/* skills section styling */
+section#skills.skills {
+  width: 100%;
+}
+
+.skills {
+  background-color: #eeebe3;
+  color: rgb(0, 0, 0);
+}
+
+.skills .title::before,
+.teams .title::before {
+  background: #000;
+}
+
+.skills .title::after,
+.teams .title::after {
+  background: #eeebe3;
+  content: 'what i use?';
+}
+
+.skills ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.skills li {
+  width: 90px;
+}
+
+.dzaky-skills .skills-img {
+  width: 90px;
+}
+
+.dzaky-skills .skills-overlay {
+  position: absolute;
+  top: -3px;
+  width: 100%;
+  height: 100%;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.dzaky-skills .skills-overlay:hover {
+  opacity: 0.9;
+  box-shadow: 0px 0px 10px 5px #888888;
+}
+
+.dzaky-skills {
+  position: relative;
+}
+
+.dzaky-skills-info {
+  height: 30px;
+}
+
+.dzaky-skills-info .icon-desc {
+  color: black;
+  text-align: center;
+}
+
+/*project section styling*/
+.projects ul {
+  list-style-type: none;
+  padding: auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.projects li {
+  width: 370px;
+  height: 250px;
+}
+
+.dzaky-projects .projects-img {
+  width: 370px;
+  height: 250px;
+}
+
+.dzaky-projects .projects-overlay {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.dzaky-projects .projects-overlay:hover {
+  opacity: 1;
+}
+
+.release-date {
+  font-size: 0.8em;
+}
+
+.projects-title {
+  font-weight: bold;
+  margin-top: 3px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.dzaky-projects {
+  position: relative;
+}
+
+.container-projects .container-2 {
+  padding-top: 75px;
+}
+
+/*contact section styling*/
+.contact {
+  background-color: #eeebe3;
+}
+
+.contact .title::before,
+.teams .title::before {
+  background: #000;
+}
+
+.contact .title::after,
+.teams .title::after {
+  background: #eeebe3;
+  content: 'more about me?';
+}
+
+.contact .media {
+  text-align: center;
+  display: flexbox;
+}
+
+.contact .contact-text p {
+  text-align: center;
+}
+
+.media a {
+  color: black;
+  text-decoration: none;
+}
+
+.media a:hover {
+  text-decoration: underline;
+}
+
+/* footer section styling */
+footer {
+  background: #000;
+  padding: 15px 23px;
+  color: #fff;
+  text-align: center;
+}
+
+footer span a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+footer span a:hover {
+  text-decoration: underline;
+  color: #6e7aa8;
+}
+
+.copyright {
+  color: white;
+  display: inline-block;
+}
+
+.copyright,
+.copyright::after {
+  box-sizing: border-box;
+  position: relative;
+  transform: scale(var(--ggs, 1));
+  top: 3px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid;
+  border-radius: 40px;
+}
+
+.copyright::after {
+  content: '';
+  position: absolute;
+  border-right-color: transparent;
+  width: 8px;
+  height: 8px;
+  top: 3px;
+  left: 3px;
+  transform: none;
+}
+
+/* responsive media query start */
+@media (max-width: 1300px) {
+  .home .max-width {
+    margin-left: 0px;
+  }
+
+  .container-projects .container-2 {
+    padding-top: 45px;
+  }
+}
+
+@media (max-width: 991px) {
+  .max-width {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 947px) {
+  .menu-btn {
+    display: block;
+    z-index: 999;
+  }
+
+  .menu-btn i.active:before {
+    content: '\f00d';
+  }
+
+  .navbar .menu {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    left: -100%;
+    top: 0;
+    background: #36416c;
+    text-align: center;
+    padding-top: 80px;
+    transition: all 0.3s ease;
+  }
+
+  .navbar .menu.active {
+    left: 0;
+  }
+
+  .navbar .menu li {
+    display: block;
+  }
+
+  .navbar .menu li a {
+    display: inline-block;
+    margin: 20px 0;
+    font-size: 25px;
+  }
+
+  .home .home-content .text-2 {
+    font-size: 70px;
+  }
+
+  .home .home-content .text-3 {
+    font-size: 35px;
+  }
+
+  .home .home-content a {
+    font-size: 23px;
+    padding: 10px 30px;
+  }
+
+  .max-width {
+    max-width: 930px;
+  }
+
+  .dzaky-projects {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 690px) {
+  .max-width {
+    padding: 0 23px;
+  }
+
+  .home .home-content .text-2 {
+    font-size: 60px;
+  }
+
+  .home .home-content .text-3 {
+    font-size: 32px;
+  }
+
+  .home .home-content a {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .home .home-content .text-2 {
+    font-size: 50px;
+  }
+
+  .home .home-content .text-3 {
+    font-size: 27px;
+  }
+
+  .scroll-up-btn {
+    right: 15px;
+    bottom: 15px;
+    height: 38px;
+    width: 35px;
+    font-size: 23px;
+    line-height: 38px;
+  }
+
+  .projects ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+  }
+
+  .projects li {
+    width: 300px;
+    height: 200px;
+  }
+
+  .dzaky-projects .projects-img {
+    width: 300px;
+    height: 200px;
+  }
+
+  .skills ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .skills li {
+    width: 70px;
+  }
+
+  .dzaky-skills .skills-img {
+    width: 70px;
+  }
+
+  .container-projects .container-2 {
+    padding-top: 0;
+  }
+}
